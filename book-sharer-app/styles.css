@@ -84,6 +84,59 @@ main {
   color: #ff9c1a;
 }
 
+#login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: -400px;
+}
+
+#login-form{
+  margin-top: 20px;
+  
+}
+
+#create-user{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  
+}
+#create-user-button{
+  margin-top: 25px;
+}
+#books{
+  font-size: larger;
+  position: absolute;
+  top: 200px; /* Adjust the desired top offset */
+  left: 200px; /* Adjust the desired left offset */
+  
+}
+#book-descriptions{
+  display: flex;
+  flex-direction: column;
+  
+  justify-content: center;
+  margin-top: 0px;
+}
+#save-book {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ef99eb;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#save-book:hover {
+  background-color: #ef99eb;
+}
+
 footer {
   background: #fff;
   padding: 20px;

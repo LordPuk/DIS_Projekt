@@ -119,24 +119,29 @@ function calculateNewAverageRating(currentAverage, newRating) {
   return newAverage;
 }
 
-// Select all elements with the "i" tag and store them in a NodeList called "stars"
-const stars = document.querySelectorAll(".stars i");
+document.addEventListener("DOMContentLoaded", function () {
+  // Retrieve the stars HTML elements
+  const stars = document.querySelectorAll(".stars .fa-star");
 
-// Loop through the "stars" NodeList
-stars.forEach((star, index) => {
-  // Add an event listener that runs a function when the "click" event is triggered
-  star.addEventListener("click", () => {
-    // Remove "active" class from all stars
-    stars.forEach((star) => {
-      star.classList.remove("active");
+  // Loop through the "stars" NodeList
+  stars.forEach((star, index) => {
+    // Add an event listener that runs a function when the "click" event is triggered
+    star.addEventListener("click", () => {
+      // Remove "active" class from all stars
+      stars.forEach((star) => {
+        star.classList.remove(".stars .fa-active");
+      });
+
+      // Add "active" class to the clicked star and any stars with a lower index
+      for (let i = 0; i <= index; i++) {
+        stars[i].classList.add(".stars .fa-active");
+      }
     });
-
-    // Add "active" class to the clicked star and any stars with a lower index
-    for (let i = 0; i <= index; i++) {
-      stars[i].classList.add("active");
-    }
   });
 });
+
+
+
 
 
 
