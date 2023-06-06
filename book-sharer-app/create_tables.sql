@@ -1,7 +1,11 @@
--- Entities:
+-- Creates all tables with schemas (excluding data)
 
-DROP TABLE IF EXISTS Books CASCADE; -- Also has Ratings (because of week entities implementation)
-CREATE TABLE Books(
+CREATE TABLE Authors(
+    Name VARCHAR(100),
+    PRIMARY KEY (Name)
+);
+
+CREATE TABLE Books( -- Also has Ratings and Writes (because of weak entities and RI implementation)
     ISBN VARCHAR(13),
     Date_published DATE,
     Publisher VARCHAR(100),
@@ -19,19 +23,11 @@ CREATE TABLE Books(
         ON UPDATE CASCADE
 );
 
-DROP TABLE IF EXISTS Authors CASCADE;
-CREATE TABLE Authors(
-    Name VARCHAR(100),
-    PRIMARY KEY (Name)
-);
-
-DROP TABLE IF EXISTS Genres CASCADE;
 CREATE TABLE Genres(
     Genre VARCHAR(100),
     PRIMARY KEY (Genre)
 );
 
-DROP TABLE IF EXISTS Users CASCADE;
 CREATE TABLE Users(
     Username VARCHAR(30),
     Password VARCHAR(30),
@@ -39,9 +35,8 @@ CREATE TABLE Users(
     PRIMARY KEY (Username)
 );
 
-DROP TABLE IF EXISTS Readers CASCADE;
 CREATE TABLE Readers(
-    Username VARCHAR(30), -- Indicate inheritance with superclass key
+    Username VARCHAR(30), -- Indicate inheritance with "superclass" key
     Education VARCHAR(50),
     Language VARCHAR(30),
     PRIMARY KEY (Username),
@@ -50,12 +45,6 @@ CREATE TABLE Readers(
         ON UPDATE CASCADE
 );
 
-
-
-
--- Relationships:
-
-DROP TABLE IF EXISTS Has_genre;
 CREATE TABLE Has_genre(
     ISBN VARCHAR(13),
     Genre VARCHAR(100),
@@ -68,7 +57,6 @@ CREATE TABLE Has_genre(
         ON UPDATE CASCADE
 );
 
-DROP TABLE IF EXISTS Favorite_book;
 CREATE TABLE Favorite_book(
     Username VARCHAR(30),
     ISBN VARCHAR(13),
@@ -81,7 +69,6 @@ CREATE TABLE Favorite_book(
         ON UPDATE CASCADE
 );
 
-DROP TABLE IF EXISTS Favorite_author;
 CREATE TABLE Favorite_author(
     Username VARCHAR(30),
     Author VARCHAR(100),
@@ -94,7 +81,6 @@ CREATE TABLE Favorite_author(
         ON UPDATE CASCADE
 );
 
-DROP TABLE IF EXISTS Favorite_genre;
 CREATE TABLE Favorite_genre(
     Username VARCHAR(30),
     Genre VARCHAR(100),
@@ -107,22 +93,6 @@ CREATE TABLE Favorite_genre(
         ON UPDATE CASCADE
 );
 
-/*
-DROP TABLE IF EXISTS Friends;
-CREATE TABLE Friends(
-    Username VARCHAR(30),
-    Friend VARCHAR(30),
-    PRIMARY KEY (Username, Friend),
-    FOREIGN KEY (Username) REFERENCES Users
-        ON DELETE CASCADE
-        ON UPDATE CASCADE,
-    FOREIGN KEY (Friend) REFERENCES Users
-        ON DELETE CASCADE
-        ON UPDATE CASCADE
-);
-*/
-
-DROP TABLE IF EXISTS Reads;
 CREATE TABLE Reads(
     Username VARCHAR(30),
     ISBN VARCHAR(13),
@@ -138,8 +108,7 @@ CREATE TABLE Reads(
         ON UPDATE CASCADE
 );
 
-DROP TABLE IF EXISTS Rates; -- ISBN in stead of RatingID (because of weak entity implementation)
-CREATE TABLE Rates(
+CREATE TABLE Rates( -- ISBN in stead of RatingID (because of weak entity implementation)
     Username VARCHAR(30),
     ISBN VARCHAR(13),
     Rating FLOAT,
