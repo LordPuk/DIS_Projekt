@@ -8,11 +8,12 @@ import os
 import glob
 import pandas as pd
 import random
+from datetime import date
 
 app = Flask(__name__ , static_url_path='/static')
 
 # set your own database name, username and password
-db = "dbname='XXXX' user='XXXX' host='localhost' password='XXXX'" #potentially wrong password
+db = "dbname='qianq' user='qianq' host='localhost' password='psql'" #potentially wrong password
 conn = psycopg2.connect(db)
 cursor = conn.cursor()
 
@@ -20,6 +21,39 @@ cursor = conn.cursor()
 #Kode for login system ..
 #
 #
+
+@app.route("/", methods=["GET", "POST"])
+def account():
+    cur = conn.cursor()
+    if request.method == "POST":
+            user = request.form["createuser"]
+            password = request.form["createpassword"]
+            cur.execute("SELECT username FROM users WHERE username LIKE %s AND password LIKE %s", (user, password))
+            unique = cur.fetchall()
+            if len(unique) != 0:
+                return redirect(url_for("home"))
+            else:
+                flash("wrong pass or name. how about DNUR")
+            
+    return render_template("login.html")
+
+
+@app.route("/create", methods=["POST"])
+def create():
+    cur = conn.cursor()
+    if request.method == "POST":
+        user = request.form["createuser"]
+        password = request.form["createpassword"]
+        cur.execute("SELECT username FROM users WHERE username LIKE %s", (user))
+        unique = cur.fetchall()
+        if len(unique) == 0:
+            today = date.today()
+            cur.execute("INSERT INTO users(Username, Password, Creation_date) VALUES (%s, %s, %s)", (user, password, today))
+            conn.commit()
+            return redirect(url_for("home"))
+    return render_template("create_user.html")
+                
+
 
 @app.route("/book_details")
 def book_details():

@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Logout - Book Sharer</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" type="text/css" href="../static/styles.css">
 </head>
 <body>
   <nav class="main-header"> 
@@ -25,17 +25,17 @@
         <h2>Login</h2>
         <form id="login-form">
           <label for="username">Username</label>
-          <input type="text" id="username" name="username" required>
+          <input type="text" id="user" name="user" value="" placeholder="user" required>
           <label for="password">Password</label>
-          <input type="password" id="password" name="password" required>
+          <input type="password" id="password" name="password" value="" placeholder="password" required>
           <button id ="login_button" type="submit">Login</button>
           <span id="error-message" style="display: none;"></span>
         </form>
-    <section id ="create-user">
-        <h2>Create User </h2>
-        <button id="create-user-button"> Create User </button>
-        
-    </section>
+
+        <section id ="create-user">
+        <h2> Create User </h2>
+        <button id="create-user-button" href="create_user.html"> Create User </button>
+  
     </section>
 
   </main>
@@ -43,6 +43,10 @@
   <footer>
     <p>&copy; 2023 Book Sharer. All rights reserved.</p>
   </footer>
-  <script> src="app.js"</script>
+  
 </body>
 </html>
+
+
+
+

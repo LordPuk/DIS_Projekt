@@ -2,11 +2,11 @@
 <html>
 <head>
   <title>Book Sharer</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" type="text/css" href="../static/styles.css">
 </head>
 <body>
   <nav class="main-header"> 
-    <img src="/book-share-logo.jpg" class="main-header" alt="Book Sharer Logo">
+    <img src="../static/images/book-share-logo.jpg" class="main-header" alt="Book Sharer Logo">
     <h1>Welcome to Book Sharer</h1>
     <nav>
       <ul>
@@ -26,12 +26,7 @@
       <div id="book-info">
         <h3>Title: <span id="book-title"></span></h3>
         <p>Description: <span id="book-description"></span></p>
-        <p>Average Rating: <span id="book-rating"></span></p>
-        <!-- Add the following input fields for user rating -->
-        <label for="user-rating">Your Rating:</label>
-        <input type="number" id="user-rating" min="1" max="5" required>
-        <button id="submit-rating">Submit Rating</button>
-        <!-- End of user rating fields -->
+        <p>Rating: <span id="book-rating"></span></p>
       </div>
     </section>
 
@@ -54,6 +49,6 @@
     <p>&copy; 2023 Book Sharer. All rights reserved.</p>
   </footer>
 
-  <script src="app.js"></script>
+  
 </body>
 </html>
