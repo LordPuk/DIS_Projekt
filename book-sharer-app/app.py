@@ -21,6 +21,8 @@ cursor = conn.cursor()
 #Kode for login system ..
 #
 #
+#kom nu!!!!
+
 
 @app.route("/", methods=["GET", "POST"])
 def account():
