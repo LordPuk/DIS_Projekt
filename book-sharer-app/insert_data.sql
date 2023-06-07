@@ -9,4 +9,6 @@ START TRANSACTION;
 --\copy Has_genre FROM 'data/Has_genre_data.csv' DELIMITER ';' ;
 \copy Users FROM 'data/Users_data.csv' DELIMITER ';' ;
 \copy Readers FROM 'data/Readers_data.csv' DELIMITER ';' ;
+\copy Reads FROM 'data/Reads_data.csv' WITH DELIMITER ';' NULL AS 'NULL' CSV;
+\copy Favorite_book FROM 'data/Favorite_book_data.csv' WITH DELIMITER ';';
 COMMIT;
