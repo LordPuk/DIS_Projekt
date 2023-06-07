@@ -43,12 +43,20 @@ body {
   font-weight: 500;
 }
 
+
 main {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.header-link {
+  text-decoration: none;
+  color: #333;
+  
+
 }
 
 .rating-box {
@@ -89,12 +97,14 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: -400px;
+  margin-top: -200px;
 }
 
-#login-form{
-  margin-top: 20px;
-  
+#login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
 }
 
 #create-user{
@@ -105,8 +115,14 @@ main {
   margin-top: 20px;
   
 }
+#login_button{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
 #create-user-button{
-  margin-top: 25px;
+  margin-top: 10px;
 }
 #books{
   font-size: larger;
@@ -114,6 +130,24 @@ main {
   top: 200px; /* Adjust the desired top offset */
   left: 200px; /* Adjust the desired left offset */
   
+}
+#book-details{
+  /*font-size: larger;*/
+  position: absolute;
+  top: 200px; /* Adjust the desired top offset */
+  left: 200px; /* Adjust the desired left offset */
+
+}
+#index-ratings{
+  top: 200px;
+  position: absolute;
+}
+
+#my-books{
+  /*font-size: larger;*/
+  position: absolute;
+  top: 200px; /* Adjust the desired top offset */
+  right: 200px; /* Adjust the desired left offset */
 }
 #book-descriptions{
   display: flex;
@@ -157,3 +191,9 @@ footer p {
   border-radius: 50%;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
+
+
+
+
+
