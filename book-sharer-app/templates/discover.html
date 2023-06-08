@@ -24,13 +24,23 @@
   <main>
     <section id="books">
       <h1> Books </h1>
-    <section id="book-descriptions">
-      <p id="book-title">Book Title</p>
-      <p id="book-description">Book Description</p>
-      <p id="book-rating"> Book Rating</p>
-      <button id="save-book">Save Book</button>
-    
-    </section>
+      <table>
+        <tr>
+          <th>ISBN</th>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Rating</th>
+        </tr>
+        {% for i in range(5) %}
+        <tr>
+          <td><a href="/bookdetails?isbn={{data[i][0]}}">{{data[i][0]}}</a></td>
+          <td>{{data[i][1]}}</td>
+          <td>{{data[i][2]}}</td>
+          <td>{{data[i][3]}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      
     </section>
   </main>
 

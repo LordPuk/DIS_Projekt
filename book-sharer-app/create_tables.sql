@@ -116,7 +116,7 @@ CREATE TABLE Rates( -- ISBN in stead of RatingID (because of weak entity impleme
     FOREIGN KEY (Username) REFERENCES Users
         ON DELETE CASCADE
         ON UPDATE CASCADE,
-    FOREIGN KEY (ISBN) REFERENCES Users
+    FOREIGN KEY (ISBN) REFERENCES Books
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );

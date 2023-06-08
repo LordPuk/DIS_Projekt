@@ -6,7 +6,7 @@
 </head>
 <body>
   <nav class="main-header"> 
-    <img src="/book-share-logo.jpg" class="main-header" alt="Book Sharer Logo">
+    <img src="../static/images/book-share-logo.jpg" class="main-header" alt="Book Sharer Logo">
     <h1>Welcome to Book Sharer</h1>
     <nav>
       <ul>
@@ -24,8 +24,9 @@
   <main>
     <section id="book-details">
       <h2 id="book-title">{{data[0][3]}}</h2>
-      <h2 id="book-author">{{data[0][10]}}</h2>
-      <h2 id="book-publisher">{{data[0][2]}}</h2>
+      <td id="book-author">{{data[0][10]}}</td>
+      <br>
+      <td id="book-publisher">{{data[0][2]}}</td>
       <table>
         <tr>
           <th>ISBN</th>
@@ -47,13 +48,16 @@
       <form id="savebook" method="post">
       <p id="book-description">{{data[0][7]}}</p>
       <button id="save-book" type="submit">Save Book</button>
+      <br>
+      <td><a href="/bookrate?isbn={{data[0][0]}}"> Rate book</a></td>
       <span id="error-message" style="display: none;"></span>
       </form>
     </section>
     
 
+      
   </main>
-
+  
   <footer>
     <p>&copy; 2023 Book Sharer. All rights reserved.</p>
   </footer>

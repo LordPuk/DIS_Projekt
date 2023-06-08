@@ -61,7 +61,7 @@ def book_details():
                 user = session['username']
                 today = date.today()
                 cur.execute("INSERT INTO Reads(Username, ISBN, Start_date, Completion_date, Current_pages) VALUES (%s, %s, %s, NULL, 0)", (user, isbn, today)) #bog ind i 
-                cur.commit()
+                conn.commit()
             else:
                 flash("cannot save book if not logged in lul dnur")
 
@@ -70,7 +70,10 @@ def book_details():
 
 @app.route("/discover")
 def discover():
-    return render_template("discover.html")
+    cur = conn.cursor()
+    cur.execute(f'''SELECT ISBN, Title, Author, Average_rate FROM Books OFFSET floor(random() * ( SELECT COUNT(*) FROM Books) ) LIMIT 5;''')
+    data =cur.fetchall()
+    return render_template("discover.html", data = data)
 
 
 @app.route("/login", methods=["GET","POST"])
@@ -107,14 +110,25 @@ def my_books():
         user = session['username']
         cur.execute(f'''SELECT ISBN, Title, Author, (ISBN IN (SELECT ISBN FROM Favorite_book WHERE Username LIKE '{user}')) AS Favorite FROM (Books NATURAL JOIN Reads) WHERE Username = '{user}';''')
         data = cur.fetchall()
-        #print(data)
         
         return render_template("mybooks.html", name=session['username'],len = len(data), data = data)
     
 
-@app.route("/ratings")
+@app.route("/bookrate", methods=["POST","GET"])
 def ratings():
-    return render_template("ratings.html")
+    cur= conn.cursor()
+    isbn = request.args.get('isbn',default =0, type = str)
+    cur.execute(f'''SELECT Title FROM Books WHERE ISBN = '{isbn}';''')
+    title = cur.fetchall()
+    user = session['username']
+    if request.method == "POST":
+        rating = request.form["user-rating"]
+        rating = float(rating)
+        cur.execute(f'''UPDATE books SET Average_rate = (average_rate * voters + {rating}) / (voters + 1), voters = voters + 1 WHERE ISBN LIKE '{isbn}';''')
+        conn.commit()
+        cur.execute(f'''INSERT INTO Rates(Username, ISBN, Rating) VALUES ('{user}', '{isbn}', {rating});''')
+        conn.commit()
+    return render_template("ratings.html", title=title)
 
 if __name__ == "__main__":
     app.secret_key = os.urandom(12)
