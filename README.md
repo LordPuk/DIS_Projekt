@@ -1,16 +1,26 @@
 # Book-sharer - Share your favorite books with friends!
 
 # running book-sharer-app
+We have two ways to run our program. 
+Both Assumes a working Python 3 installation (with python=python3 and pip=pip3).
 
-Assumes a working Python 3 installation (with python=python3 and pip=pip3).
+(1) In the app.py-file, set your own database username and password
 
-(1) Run the code below to install the dependencies.
+(2) In the makefile, change postgres to your postgres username
+
+(3) Write "make all" in the terminal
+
+----------------------------------------------------------------------------
+
+(1) In the app.py-file, set your own database username and password
+
+
+(2) initilize the databases like this: 
+psql -U [username] < book-sharer-app/initialize_database.sql
+
+
+(3) Run the code below to install the dependencies.
 >$ pip install -r requirements.txt
-
-//(2) Initialize the database, by running the SQL files (Creating the necessary tables) 
-psql [-U username] < initialize_database.sql
-
-(3) In the app.py-file, set your own database username and password
 
 (4) Run Web-App
 >$ python src/app.py
