@@ -10,12 +10,13 @@
     <h1>Welcome to Book Sharer</h1>
     <nav>
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="login.html">Login</a></li>
-        <li><a href="mybooks.html">My Books</a></li>
-        <li><a href="discover.html">Discover</a></li>
-        <li><a href="ratings.html">Ratings</a></li>
-        <li><a href="logout.html">Logout</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="login">Login</a></li>
+        <li><a href="createuser">Create User</a></li>
+        <li><a href="mybooks">My Books</a></li>
+        <li><a href="discover">Discover</a></li>
+        <li><a href="ratings">Ratings</a></li>
+        <li><a href="logout">Logout</a></li>
       </ul>
     </nav>
   </nav>
@@ -23,7 +24,7 @@
   <main>
     <section id="login">
         <h2>Login</h2>
-        <form id="login-form">
+        <form id="login-form" method="post">
           <label for="username">Username</label>
           <input type="text" id="user" name="user" value="" placeholder="user" required>
           <label for="password">Password</label>
@@ -32,9 +33,7 @@
           <span id="error-message" style="display: none;"></span>
         </form>
 
-        <section id ="create-user">
-        <h2> Create User </h2>
-        <button id="create-user-button" href="create_user.html"> Create User </button>
+        
   
     </section>
 

@@ -10,23 +10,32 @@
     <h1>Welcome to Book Sharer</h1>
     <nav>
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="login.html">Login</a></li>
-        <li><a href="mybooks.html">My Books</a></li>
-        <li><a href="discover.html">Discover</a></li>
-        <li><a href="ratings.html">Ratings</a></li>
-        <li><a href="logout.html">Logout</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="login">Login</a></li>
+        <li><a href="createuser">Create User</a></li>
+        <li><a href="mybooks">My Books</a></li>
+        <li><a href="discover">Discover</a></li>
+        <li><a href="ratings">Ratings</a></li>
+        <li><a href="logout">Logout</a></li>
       </ul>
     </nav>
   </nav>
 
   <main>
     <section id ="create-user">
-        <h2>Create User </h2>
-        <button id="create-user-button"> Create User </button>
-        <input type="text" id="createuser" name="createuser" value="" placeholder="createuser" required>
-        <input type="password" id="createpassword" name="createpassword" value="" placeholder="createpassword" required>
-    </section>
+        <h2>Create</h2>
+        <form id="create-form" method = "post">
+          <label for="username">Username</label>
+          <input type="text" id="createuser" name="createuser" value="" placeholder="createuser" required>
+          <label for="password">Password</label>
+          <input type="createpassword" id="createpassword" name="createpassword" value="" placeholder="createpassword" required>
+          <label for="Language">Language</label>
+          <input type="Language" id="Language" name="Language" value="" placeholder="Language" required>
+          <label for="Education">Education</label>
+          <input type="Education" id="Education" name="Education" value="" placeholder="Education" required>
+          <button id ="login_button" type="submit">Create</button>
+          <span id="error-message" style="display: none;"></span>
+        </form>
     </section>
 
   </main>

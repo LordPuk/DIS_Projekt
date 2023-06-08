@@ -10,23 +10,48 @@
     <h1>Welcome to Book Sharer</h1>
     <nav>
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="login.html">Login</a></li>
-        <li><a href="mybooks.html">My Books</a></li>
-        <li><a href="discover.html">Discover</a></li>
-        <li><a href="ratings.html">Ratings</a></li>
-        <li><a href="logout.html">Logout</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="login">Login</a></li>
+        <li><a href="createuser">Create User</a></li>
+        <li><a href="mybooks">My Books</a></li>
+        <li><a href="discover">Discover</a></li>
+        <li><a href="ratings">Ratings</a></li>
+        <li><a href="logout">Logout</a></li>
       </ul>
     </nav>
   </nav>
 
   <main>
     <section id="book-details">
-      <h2 id="book-title"></h2>
-      <p id="book-description"></p>
-      <p id="book-rating"></p>
-      <button id="save-book">Save Book</button>
+      <h2 id="book-title">{{data[0][3]}}</h2>
+      <h2 id="book-author">{{data[0][10]}}</h2>
+      <h2 id="book-publisher">{{data[0][2]}}</h2>
+      <table>
+        <tr>
+          <th>ISBN</th>
+          <th>Language</th>
+          <th>Published</th>
+          <th>Rating</th>
+          <th>Pages</th>
+          <th>Price</th>
+        </tr>
+        <tr>
+          <td><p id="book-author">{{data[0][0]}}</p></td>
+          <td><p id="book-author">{{data[0][4]}}</p></td>
+          <td><p id="book-date-published">{{data[0][1]}}</p></td>
+          <td><p id="book-rating">{{data[0][8]}}</p></td>
+          <td><p id="book-pages">{{data[0][5]}}</p></td>
+          <td><p id="book-description">{{data[0][6]}}</p></td>
+        </tr>
+      </table>
+      <form id="savebook" method="post">
+      <p id="book-description">{{data[0][7]}}</p>
+      <button id="save-book" type="submit">Save Book</button>
+      <span id="error-message" style="display: none;"></span>
+      </form>
     </section>
+    
+
   </main>
 
   <footer>
