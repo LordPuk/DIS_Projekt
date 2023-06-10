@@ -15,7 +15,7 @@
         <li><a href="createuser">Create User</a></li>
         <li><a href="mybooks">My Books</a></li>
         <li><a href="discover">Discover</a></li>
-        <li><a href="ratings">Ratings</a></li>
+        <!-- <li><a href="ratings">Ratings</a></li> -->
         <li><a href="logout">Logout</a></li>
       </ul>
     </nav>
@@ -32,7 +32,12 @@
           <button id ="login_button" type="submit">Login</button>
           <span id="error-message" style="display: none;"></span>
         </form>
-
+            <!-- This is for the error message with flash -->
+            <body>
+              {% for mesg in get_flashed_messages() %}
+              <h1>{{ mesg }}</h1>
+              {% endfor %}
+            </body>
         
   
     </section>

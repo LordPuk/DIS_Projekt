@@ -21,7 +21,10 @@ cursor = conn.cursor()
 
 @app.route("/")
 def account():
-    return render_template("index.html")
+    cur = conn.cursor()
+    cur.execute(f'''SELECT Title,Average_rate , ISBN  FROM Books OFFSET floor(random() * ( SELECT COUNT(*) FROM Books) ) LIMIT 1;''')
+    data =cur.fetchall()
+    return render_template("index.html", data = data)
 
 
 @app.route("/createuser", methods=["GET","POST"])
@@ -53,7 +56,7 @@ def book_details():
     cur.execute(f'''SELECT * FROM Books WHERE ISBN LIKE '{isbn}' ''')
     data = cur.fetchall()
     cur.execute(f'''SELECT * FROM Has_genre WHERE ISBN LIKE '{isbn}' ''')
-    genres = cur.fetchall() #tupples with isbn and genres 
+    genres = cur.fetchall() 
     print(genres)
     if request.method =="POST":
             print("KNAP TRYKKET")
@@ -64,7 +67,7 @@ def book_details():
                 cur.execute("INSERT INTO Reads(Username, ISBN, Start_date, Completion_date, Current_pages) VALUES (%s, %s, %s, NULL, 0)", (user, isbn, today)) #bog ind i 
                 conn.commit()
             else:
-                flash("cannot save book if not logged in lul dnur")
+                flash("cannot save book if not logged in lul dnur") 
 
     return render_template("book_details.html", data = data, bookgenre = genres, len = len(genres))
  
@@ -121,14 +124,18 @@ def ratings():
     isbn = request.args.get('isbn',default =0, type = str)
     cur.execute(f'''SELECT Title FROM Books WHERE ISBN = '{isbn}';''')
     title = cur.fetchall()
-    user = session['username']
-    if request.method == "POST":
-        rating = request.form["user-rating"]
-        rating = float(rating)
-        cur.execute(f'''UPDATE books SET Average_rate = (average_rate * voters + {rating}) / (voters + 1), voters = voters + 1 WHERE ISBN LIKE '{isbn}';''')
-        conn.commit()
-        cur.execute(f'''INSERT INTO Rates(Username, ISBN, Rating) VALUES ('{user}', '{isbn}', {rating});''')
-        conn.commit()
+    if session.get('username') == None : 
+        flash("login to rate a book")
+        return redirect(url_for("account"))
+    else:
+        user = session['username']
+        if request.method == "POST":
+            rating = request.form["user-rating"]
+            rating = float(rating)
+            cur.execute(f'''UPDATE books SET Average_rate = (average_rate * voters + {rating}) / (voters + 1), voters = voters + 1 WHERE ISBN LIKE '{isbn}';''')
+            conn.commit()
+            cur.execute(f'''INSERT INTO Rates(Username, ISBN, Rating) VALUES ('{user}', '{isbn}', {rating});''')
+            conn.commit()
     return render_template("ratings.html", title=title)
 
 if __name__ == "__main__":

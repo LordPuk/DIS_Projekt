@@ -15,13 +15,19 @@
         <li><a href="createuser">Create User</a></li>
         <li><a href="mybooks">My Books</a></li>
         <li><a href="discover">Discover</a></li>
-        <li><a href="ratings">Ratings</a></li>
+        <!-- <li><a href="ratings">Ratings</a></li> -->
         <li><a href="logout">Logout</a></li>
       </ul>
     </nav>
   </nav>
 
   <main> 
+        <!-- This is for the error message with flash -->
+        <body>
+          {% for mesg in get_flashed_messages() %}
+          <h1>{{ mesg }}</h1>
+          {% endfor %}
+        </body>
     <h1>{{title[0][0]}}</h1>
     <form id="rating-form" method="post">
       <label for="user-rating">Your Rating:</label>
