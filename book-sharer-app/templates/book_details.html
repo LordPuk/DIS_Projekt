@@ -35,6 +35,7 @@
           <th>Rating</th>
           <th>Pages</th>
           <th>Price</th>
+          <th>Genre</th>
         </tr>
         <tr>
           <td><p id="book-author">{{data[0][0]}}</p></td>
@@ -42,7 +43,10 @@
           <td><p id="book-date-published">{{data[0][1]}}</p></td>
           <td><p id="book-rating">{{data[0][8]}}</p></td>
           <td><p id="book-pages">{{data[0][5]}}</p></td>
-          <td><p id="book-description">{{data[0][6]}}</p></td>
+          <td><p id="book-price">{{data[0][6]}}</p></td>
+          {% for i in range(len) %}
+          <td><p id="book-genre">{{bookgenre[i][1]}}  <br> </p></td>
+          {% endfor %}
         </tr>
       </table>
       <form id="savebook" method="post">

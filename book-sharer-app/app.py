@@ -13,7 +13,7 @@ from datetime import date
 app = Flask(__name__ , static_url_path='/static')
 
 # set your own database name, username and password
-db = "dbname='postgres' user='postgres' host='localhost' password=''" #potentially wrong password
+db = "dbname='qianq' user='qianq' host='localhost' password='psql'" #potentially wrong password
 conn = psycopg2.connect(db)
 cursor = conn.cursor()
 
@@ -53,7 +53,8 @@ def book_details():
     cur.execute(f'''SELECT * FROM Books WHERE ISBN LIKE '{isbn}' ''')
     data = cur.fetchall()
     cur.execute(f'''SELECT * FROM Has_genre WHERE ISBN LIKE '{isbn}' ''')
-    genres = cur.fetchall()
+    genres = cur.fetchall() #tupples with isbn and genres 
+    print(genres)
     if request.method =="POST":
             print("KNAP TRYKKET")
             if session.get('logged_in'):
@@ -65,7 +66,7 @@ def book_details():
             else:
                 flash("cannot save book if not logged in lul dnur")
 
-    return render_template("book_details.html", data = data)
+    return render_template("book_details.html", data = data, bookgenre = genres, len = len(genres))
  
 
 @app.route("/discover")
