@@ -9,6 +9,7 @@ import glob
 import pandas as pd
 import random
 from datetime import date
+import time
 
 app = Flask(__name__ , static_url_path='/static')
 
@@ -126,6 +127,8 @@ def ratings():
     title = cur.fetchall()
     if session.get('username') == None : 
         flash("login to rate a book")
+        time.sleep(3)
+        session['_flashes'].clear()
         return redirect(url_for("account"))
     else:
         user = session['username']
