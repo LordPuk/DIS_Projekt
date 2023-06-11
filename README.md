@@ -60,9 +60,8 @@ Both Assumes a working Python 3 installation (with python=python3 and pip=pip3).
 
 # Made by:
 
-Astrid Arhnung Schou-Hanssen - sjv575
-Natacha Nielsen - zkc122
-Nicklas B. S. Jørgensen - czj173
-Qianqian Fang - tgq379
-Sofia B. Øregaard - lzx163
-
+Group 104 - Astrid Arhnung Schou-Hanssen - sjv575
+Group 104 - Natacha Nielsen 			 - zkc122
+Group 104 - Sofia B. Øregaard 		  	 - lzx163
+Group 89  - Nicklas B. S. Jørgensen 	 - czj173
+Group 89  - Qianqian Fang 				 - tgq379
