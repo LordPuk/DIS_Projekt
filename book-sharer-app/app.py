@@ -14,7 +14,7 @@ import time
 app = Flask(__name__ , static_url_path='/static')
 
 # set your own database name, username and password
-db = "dbname='qianq' user='qianq' host='localhost' password='psql'" #potentially wrong password
+db = "dbname='XXX' user='XXX' host='localhost' password='XXX'" #potentially wrong password
 conn = psycopg2.connect(db)
 cursor = conn.cursor()
 
